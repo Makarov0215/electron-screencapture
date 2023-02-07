@@ -81,6 +81,7 @@ ipcMain.on(IPC_CHANNELS.SCREENSHOT, (e, { } = {}) => {
       capture.listDisplays().then(displays => {
         displays.forEach(display => {
           capture({ display: display.id }).then(img => {
+            
             sharp(img).resize({ width: 720, height: 1000 }).toBuffer((err, buffer) => {
               if (err) {
                 console.error(err);
